@@ -2,21 +2,7 @@
 <html>
   <head>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
-	<script type="text/javascript">
 
-	$(document).ready(function(){
-		$('#t01 td.r_g').each(function(){
-			if ($(this).text() == 'Disconnect') {
-				$(this).css('background-color','#f00');
-			}
-			else
-			{
-				$(this).css('background-color','#0f0');
-			}
-		});
-	});
-
-	</script>
 
 	<script>
 	/* When the user clicks on the button,
@@ -40,8 +26,42 @@
 	  }
 	}
 	</script>
+	
+	<script>
+	/* Refresh the Status Page */
+	function refresh() {
+		
+		$.get("/status/data", function(data, status){
+			var innerString = "<tr><th>Device-ID</th><th>Device-Type</th><th>Connection Status</th><th>Close-Code</th><th>Reason</th><th>Client-Address</th></tr>";
 
-  <meta http-equiv="refresh" content="5" >
+			for(var i=0; i < data.length; i++) {
+				var color = data[i].Action=='Disconnect' ? 'red':'green';
+				innerString +="<tr><td>"+data[i].id +"</td><td>"+ data[i].type +"</td><td style='background-color:"+ color+"'>"+data[i].Action+"</td>	<td>"+data[i].CloseCode +"</td><td>"+data[i].Reason +"</td><td>"+data[i].ClientAddr +"</td></tr>";
+			} 
+			$('#t01').html(innerString);
+		});
+	}
+	 refresh();
+	setInterval( function () {
+		refresh();
+	}, 1000 );
+	function getList(){
+		$.get("/status/type", function(types, status){
+				var innerString = "";
+				for(var i=0; i < types.length; i++)
+					innerString +="<a href='/status?type="+ types[i] +"\'>" +types[i]+"</a>";
+				$('#myDropdown').html(innerString);
+			});
+	}
+	getList();
+	setInterval( function () {
+		getList();
+	}, 360000 );
+	</script>
+
+	</script>
+
+  <!-- <meta http-equiv="refresh" content="30" > -->
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 		<style>
@@ -114,13 +134,9 @@
     <h2>Device Status Dashboard</h2>
 
 	<div class="dropdown">
-	<button onclick="myFunction()" class="dropbtn">Device-Type</button>
+	  <button onclick="myFunction()" class="dropbtn">Device-Type</button>
 	  <div id="myDropdown" class="dropdown-content">
-		<% for(var i=0; i < types.length; i++) { %>
-
-		<a href="/status?type=<%= types[i] %>"><%= types[i] %></a>
-
-		<% } %>
+		
 	  </div>
 	</div>
 
@@ -130,7 +146,7 @@
 	<p></p>
 
 	<form action="/status">
-	  <b>Refine Your Search</b>: Device-ID <input type="text" name="id" value="" required> <input type="submit" value="Submit"> </a>
+	  <b>Refine Your Search</b>: Device-ID <input type="text" name="id" value="" required> 	<input type="submit" value="Submit" onclick="refresh()"> </a>
 	</form>
 
    	<p></p>
@@ -138,28 +154,6 @@
 	<p></p>
 	<p></p>
 
-	<table id="t01">
-	<tr>
-		<th>Device-ID</th>
-		<th>Device-Type</th>
-		<th>Connection Status</th>
-		<th>Close-Code</th>
-		<th>Reason</th>
-		<th>Client-Address</th>
-   </tr>
-
-	<% for(var i=0; i < data.length; i++) {
-	%>
-
-   <tr>
-        <td><%= data[i].id %></td>
-		<td><%= data[i].type %></td>
-		<td class="r_g"><%= data[i].Action %></td>
-		<td><%= data[i].CloseCode %></td>
-		<td><%= data[i].Reason %></td>
-		<td><%= data[i].ClientAddr %></td>
-   </tr>
-<% } %>
-</table>
+	<table id="t01"></table>
   </body>
 </html>
