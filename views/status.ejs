@@ -36,7 +36,7 @@
 
 			for(var i=0; i < data.length; i++) {
 				var color = data[i].Action=='Connect' ? 'green':'red';
-				innerString +="<tr><td>"+data[i].id +"</td><td>"+ data[i].type +"</td><td style='background-color:"+ color+"'>"+data[i].Action+"</td>	<td>"+data[i].CloseCode +"</td><td>"+data[i].Reason +"</td><td>"+data[i].ClientAddr +"</td></tr>";
+				innerString +="<tr><td>"+data[i].id +"</td><td>"+ data[i].type +"</td><td style='background-color:"+ color+"'>"+data[i].Action+"</td><td>"+data[i].CloseCode +"</td><td>"+data[i].Reason +"</td><td>"+data[i].ClientAddr +"</td></tr>";
 			} 
 			$('#t01').html(innerString);
 		});
