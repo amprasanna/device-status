@@ -1,8 +1,10 @@
-# Device Status Application
+# [Device Status Application](https://ibm.biz/Bdrnya)
 
 ### Introduction
 
 Device Status Sample provides a simple approach to access a Device Status Dashboard, that lists out the connection statistics of various Devices associated with Device-Types, that are registered to the Watson IoT Platform.
+
+The Recipe is detailed out under the heading [Display status of registered devices on Watson IoT Platform](https://ibm.biz/Bdrnya) and is available on the [Watson IoT Recipes site](https://developer.ibm.com/recipes/).
 
 The [source code for the Device Status sample](https://github.com/amprasanna/device-status) is written in Node.js using Node.js Client Library and has been made available on the [Github Repository](https://github.com/amprasanna/device-status). Refer to the WIoTP Documentation to further understand the IBM Watson IoT Platform capabilities, to come up with your own Application, Device & Gateway samples in the world of Internet of Things.
 
