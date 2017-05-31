@@ -4,7 +4,7 @@ declared-services:
     plan: iotf-service-free
 applications:
 - path: .
-  memory: 512M
+  memory: 256M
   instances: 1
   name: device-status
   host: device-status
