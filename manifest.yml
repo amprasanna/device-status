@@ -7,7 +7,6 @@ applications:
   memory: 256M
   instances: 1
   name: device-status
-  host: device-status
   disk_quota: 1024M
   services:
   - iotf-service
