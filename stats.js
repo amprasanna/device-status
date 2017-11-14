@@ -5,7 +5,7 @@ var appClient = new Client.IotfApplication(appClientConfig);
 appClient.connect();
 
 appClient.on("connect", function () {
-        appClient.subscribeToDeviceStatus("+","+","+","json");
+        appClient.subscribeToDeviceStatus("+","+",0);
 });
 
 appClient.on("deviceStatus", function (deviceType, deviceId, payload, topic) {
