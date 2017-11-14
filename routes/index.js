@@ -74,7 +74,7 @@ router.get('/status', function(req, res, next) {
 			current_id = req.query.id;
 		}
 
-		appClient.subscribeToDeviceStatus(current_type||"+",current_id||"+","+","json");
+		appClient.subscribeToDeviceStatus(current_type||"+",current_id||"+",0);
 		res.render('status', { title: 'IBM Watson IoT Platform' ,data,types,selected:current_type});
 	}
 	else{
