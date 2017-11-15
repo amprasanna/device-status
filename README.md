@@ -35,7 +35,11 @@ The following set of steps, shall walk you through the deployment process:
 
 1. The Device Status sample is made availabe on the Github repository. Click on the DEPLOY button, provided below, to initiate the deployment process of deploying the Node.js service, that hosts the Device Status sample.
 
-[![](https://github.com/amprasanna/iot-cognitive-samples/blob/master/deploy.png)](https://ibm.biz/Bdrnyq)
+[![](https://github.com/amprasanna/images/blob/master/Toolchain.png)](http://ibm.biz/BdrVFz)
+
+Note: If you are a User using Region other than US (United States) in your Bluemix environment, then please make use of the following [Deploy to Bluemix](http://ibm.biz/Bdi8An) button, to deploy the setup under your United Kingdom Region. Users of US South Region can ignore this step.
+
+[![](https://github.com/amprasanna/iot-cognitive-samples/blob/master/deploy.png)](http://ibm.biz/Bdi8An)
 
 2. If you are using the Jazzhub for the first time, then you will need to create a Alias for the Git repository. Pick an Alias, accept the DevOps T&C and click on Create to create an Alias for yourself. If you already have a Jazzhub account, then, you can ignore this step.
 
