@@ -16,6 +16,7 @@ var current_id="+";
 router.get('/', function(req, res, next) {
 	 console.log("org id:"+ req.query.org_id)
 	 if(req.query.auth_key && req.query.auth_token){
+		data =[];
 		var obj ={
 		  "org": req.query.auth_key.split('-')[1],
 		  "id": new Date().getTime()+"",
@@ -61,6 +62,7 @@ router.get('/', function(req, res, next) {
 
 /* GET Device Status page. */
 router.get('/status', function(req, res, next) {
+	data =[];
 	if(typeof appClient != 'undefined'){
 		if (req.query.type && current_type != req.query.type  ){
 			data =[];
